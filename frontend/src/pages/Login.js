@@ -10,7 +10,7 @@ const Login = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("login/", {
+      const res = await axios.post("https://job-potal-12.onrender.com/api/login/", {
         username,
         password,
       });
