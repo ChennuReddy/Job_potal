@@ -8,12 +8,15 @@ const ResumeList = () => {
     const fetchResumes = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("resumes/", {
+        const response = await axios.get("https://job-potal-12.onrender.com/api/resumes/", {
           headers: {
             Authorization: `Token ${token}`,
           },
         });
-        setResumes(response.data);
+
+        console.log("Resumes response:", response.data);
+        // Adjust according to actual response structure
+        setResumes(Array.isArray(response.data) ? response.data : response.data.resumes || []);
       } catch (error) {
         console.error("Error fetching resumes:", error);
       }
