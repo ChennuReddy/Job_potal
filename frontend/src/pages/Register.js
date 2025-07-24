@@ -11,21 +11,35 @@ function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    const response = await fetch('register/', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({ username, password, email }),
-    });
+    try {
+      const response = await fetch('https://job-potal-12.onrender.com/register/', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ username, password, email }),
+      });
 
-    const data = await response.json();
+      const text = await response.text();
 
-    if (response.ok) {
-      localStorage.setItem('token', data.token);
-      navigate('/');
-    } else {
-      setError(JSON.stringify(data)); // Show detailed error
+      let data = {};
+      try {
+        data = JSON.parse(text);
+      } catch (jsonError) {
+        console.error("Invalid JSON:", text);
+        setError("Server returned an invalid response");
+        return;
+      }
+
+      if (response.ok) {
+        localStorage.setItem('token', data.token);
+        navigate('/');
+      } else {
+        setError(data?.detail || JSON.stringify(data));
+      }
+    } catch (err) {
+      console.error("Network Error:", err);
+      setError("Network error. Please try again later.");
     }
   };
 
