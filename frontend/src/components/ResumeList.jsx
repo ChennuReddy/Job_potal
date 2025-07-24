@@ -8,7 +8,7 @@ const ResumeList = () => {
     const fetchResumes = async () => {
       try {
         const token = localStorage.getItem("token");
-        const response = await axios.get("http://127.0.0.1:8000/api/resumes/", {
+        const response = await axios.get("resumes/", {
           headers: {
             Authorization: `Token ${token}`,
           },

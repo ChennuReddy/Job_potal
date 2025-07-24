@@ -49,6 +49,13 @@ const HomePage = () => {
         </button>
 
         <button
+          onClick={() => navigate("/online-jobs")}
+          className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-6 rounded-lg"
+        >
+          Online Jobs
+        </button>
+
+        <button
           onClick={() => navigate("/match-online-jobs")}
           className="bg-orange-500 hover:bg-orange-600 text-white font-semibold py-3 px-6 rounded-lg"
         >

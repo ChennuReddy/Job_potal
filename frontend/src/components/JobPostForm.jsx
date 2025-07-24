@@ -19,7 +19,7 @@ const JobPostForm = () => {
 
     try {
       const response = await axios.post(
-        'http://localhost:8000/api/jobs/',
+        "https://job-potal-12.onrender.com/api/jobs/",
         {
           title,
           description,

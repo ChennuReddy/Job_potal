@@ -1,4 +1,3 @@
-// src/pages/Register.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -12,7 +11,7 @@ function Register() {
   const handleRegister = async (e) => {
     e.preventDefault();
 
-    const response = await fetch('http://127.0.0.1:8000/api/register/', {
+    const response = await fetch('https://job-potal-12.onrender.com/api/register/', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -31,35 +30,44 @@ function Register() {
   };
 
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">Register</h2>
-      <form onSubmit={handleRegister}>
-        <input
-          type="text"
-          placeholder="Username"
-          className="block border p-2 mb-2 w-full"
-          value={username}
-          onChange={(e) => setUsername(e.target.value)}
-          required
-        />
-        <input
-          type="password"
-          placeholder="Password"
-          className="block border p-2 mb-2 w-full"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          required
-        />
-        <input
-          type="email"
-          placeholder="Email"
-          className="block border p-2 mb-2 w-full"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-        />
-        <button type="submit" className="bg-blue-500 text-white px-4 py-2">Register</button>
-        {error && <p className="text-red-500 mt-2">Error: {error}</p>}
-      </form>
+    <div className="min-h-screen flex items-center justify-center bg-[#fdf6f0]">
+      <div className="w-full max-w-md bg-white shadow-2xl rounded-3xl px-10 py-12">
+        <h2 className="text-3xl font-extrabold text-center text-gray-800 mb-8">Create an Account</h2>
+        <form onSubmit={handleRegister} className="space-y-5">
+          <input
+            type="text"
+            placeholder="Username"
+            className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+          <input
+            type="password"
+            placeholder="Password"
+            className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+          <input
+            type="email"
+            placeholder="Email"
+            className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <button
+            type="submit"
+            className="w-full bg-gradient-to-r from-orange-400 to-pink-400 text-white font-semibold py-3 rounded-xl shadow-md hover:opacity-90 transition duration-300"
+          >
+            Register
+          </button>
+          {error && (
+            <p className="text-red-500 text-sm text-center mt-2">Error: {error}</p>
+          )}
+        </form>
+      </div>
     </div>
   );
 }
