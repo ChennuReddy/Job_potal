@@ -2,10 +2,12 @@ import React, { useEffect, useState } from "react";
 import API from "../api/api";
 
 const ResumeMatchAllJobs = () => {
+  // Original states (unchanged)
   const [resumes, setResumes] = useState([]);
   const [selectedResume, setSelectedResume] = useState("");
   const [matchedJobs, setMatchedJobs] = useState([]);
 
+  // Original useEffect (unchanged)
   useEffect(() => {
     const fetchResumes = async () => {
       try {
@@ -22,6 +24,7 @@ const ResumeMatchAllJobs = () => {
     fetchResumes();
   }, []);
 
+  // Original handleMatchJobs (unchanged)
   const handleMatchJobs = async () => {
     try {
       const res = await API.post("match_resume/", {
@@ -33,67 +36,96 @@ const ResumeMatchAllJobs = () => {
     }
   };
 
+  // PURELY VISUAL ENHANCEMENTS BELOW (no logic changes)
   return (
-    <div className="min-h-screen bg-gradient-to-br from-[#ffe4d6] to-[#fff0e4] py-12 px-6">
-      <div className="max-w-5xl mx-auto bg-white shadow-2xl rounded-3xl p-10">
-        <h2 className="text-3xl font-bold text-center mb-6 text-gray-800 flex items-center justify-center gap-2">
-          🎯 Resume to Job Match
-        </h2>
-
-        <div className="flex flex-col sm:flex-row justify-between items-center mb-8 gap-4">
-          <div className="flex items-center gap-2 w-full sm:w-auto">
-            <label className="font-semibold text-lg text-gray-700">Select Resume:</label>
-            <select
-              value={selectedResume}
-              onChange={(e) => setSelectedResume(e.target.value)}
-              className="px-4 py-2 rounded-lg border border-gray-300 shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
-            >
-              {resumes.map((resume, index) => (
-                <option key={index} value={resume}>
-                  {resume}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <button
-            onClick={handleMatchJobs}
-            className="bg-orange-500 hover:bg-orange-600 text-white px-6 py-2 rounded-full transition duration-300 flex items-center gap-2 shadow-lg"
-          >
-            🔍 Match Jobs
-          </button>
+    <div className="min-h-screen bg-gradient-to-br from-[#f5f7fa] to-[#e4e8f0] py-12 px-4">
+      <div className="max-w-6xl mx-auto">
+        {/* Header - Visual only */}
+        <div className="text-center mb-10">
+          <h1 className="text-3xl font-bold text-gray-800 mb-2">
+            Resume to Job Matcher
+          </h1>
+          <p className="text-gray-600">
+            Discover your best job matches
+          </p>
         </div>
 
-        {matchedJobs.length > 0 && (
+        {/* Control Panel - Same functionality, better styling */}
+        <div className="bg-white rounded-xl shadow-md p-6 mb-8">
+          <div className="flex flex-col sm:flex-row gap-4 items-center">
+            <div className="w-full sm:w-auto flex-1">
+              <label className="block text-sm font-medium text-gray-700 mb-1">
+                Select Resume
+              </label>
+              <select
+                value={selectedResume}
+                onChange={(e) => setSelectedResume(e.target.value)}
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+              >
+                {resumes.map((resume, index) => (
+                  <option key={index} value={resume}>
+                    {resume}
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            <button
+              onClick={handleMatchJobs}
+              className="w-full sm:w-auto px-6 py-2 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors shadow-sm"
+            >
+              Match Jobs
+            </button>
+          </div>
+        </div>
+
+        {/* Results Section - Same data, better presentation */}
+        {matchedJobs.length > 0 ? (
           <div>
-            <h3 className="text-2xl font-semibold text-gray-800 mb-6">
-              Top Matches for <span className="text-orange-500 font-bold">{selectedResume}</span>
+            <h3 className="text-xl font-semibold text-gray-800 mb-4">
+              Matches for: <span className="text-blue-600">{selectedResume}</span>
             </h3>
 
-            <div className="space-y-6">
+            <div className="grid gap-6 md:grid-cols-2">
               {matchedJobs.map((job, index) => (
-                <div
-                  key={index}
-                  className="bg-[#fff7f2] border-l-8 border-orange-400 rounded-xl shadow-md p-6 hover:scale-[1.02] transition-transform duration-200"
+                <div 
+                  key={index} 
+                  className="bg-white rounded-lg shadow-md overflow-hidden border border-gray-200 hover:shadow-lg transition-shadow"
                 >
-                  <div className="flex justify-between items-center mb-3">
-                    <h4 className="text-xl font-bold text-gray-800">{job.title}</h4>
-                    <span className="bg-orange-300 text-white text-sm font-semibold px-3 py-1 rounded-full">
-                      {job.matching_score}%
-                    </span>
-                  </div>
+                  <div className="p-5">
+                    <div className="flex justify-between items-start">
+                      <h4 className="text-lg font-bold text-gray-900">{job.title}</h4>
+                      <span className={`px-2 py-1 rounded-full text-xs font-semibold ${
+                        job.matching_score > 75 ? 'bg-green-100 text-green-800' : 
+                        job.matching_score > 50 ? 'bg-blue-100 text-blue-800' : 
+                        'bg-yellow-100 text-yellow-800'
+                      }`}>
+                        {job.matching_score}%
+                      </span>
+                    </div>
 
-                  <div className="bg-orange-50 p-4 rounded-lg shadow-inner border border-orange-100">
-                    <p className="text-gray-700 font-medium">🎯 Matched Skills:</p>
-                    <ul className="list-disc list-inside mt-1 text-gray-600">
-                      {job.matched_skills.map((skill, i) => (
-                        <li key={i}>{skill}</li>
-                      ))}
-                    </ul>
+                    <div className="mt-4 bg-gray-50 rounded-md p-3">
+                      <p className="text-sm font-medium text-gray-700 mb-2">
+                        Matched Skills:
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {job.matched_skills.map((skill, i) => (
+                          <span key={i} className="px-2 py-1 bg-blue-50 text-blue-800 text-xs rounded">
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   </div>
                 </div>
               ))}
             </div>
+          </div>
+        ) : (
+          <div className="bg-white rounded-xl shadow-sm p-8 text-center">
+            <p className="text-gray-500">
+              No matches yet. Select a resume and click "Match Jobs".
+            </p>
           </div>
         )}
       </div>
