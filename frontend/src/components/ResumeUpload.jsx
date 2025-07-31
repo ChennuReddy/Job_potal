@@ -49,11 +49,9 @@ function ResumeUpload() {
   };
 
   return (
-    <div className="min-h-screen overflow-hidden flex items-center justify-center bg-gradient-to-br from-orange-300 via-pink-300 to-rose-300 px-6 text-gray-800">
+    <div className="min-h-screen w-full overflow-hidden bg-gradient-to-br from-orange-300 via-pink-300 to-rose-300 flex items-center justify-center px-6 text-gray-800">
       <div className="bg-white p-10 rounded-3xl shadow-2xl max-w-xl w-full transform transition duration-500 hover:scale-[1.01] hover:shadow-pink-300">
-        <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-6">
-          Upload Your Resume
-        </h1>
+        <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-6">📄 Upload Your Resume</h1>
 
         <label
           htmlFor="resume"
