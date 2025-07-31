@@ -1,0 +1,94 @@
+/* job-match.css */
+
+/* Main container */
+.p-4 {
+  padding: 2rem;
+  background: linear-gradient(135deg, #fdf2f8, #e0f7fa);
+  border-radius: 1rem;
+  max-width: 700px;
+  margin: 2rem auto;
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.05);
+}
+
+/* Heading */
+.font-bold {
+  font-size: 1.75rem;
+  font-weight: bold;
+  color: #7c3aed;
+  margin-bottom: 1rem;
+}
+
+/* Inputs */
+input[type="number"] {
+  padding: 0.5rem 0.75rem;
+  border: 1px solid #d1d5db;
+  border-radius: 0.5rem;
+  background-color: #ffffff;
+  font-size: 1rem;
+  margin-right: 0.5rem;
+  transition: box-shadow 0.2s ease;
+}
+input[type="number"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.3);
+}
+
+/* Button */
+.bg-green-600 {
+  background-color: #34d399;
+  color: white;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+.bg-green-600:hover {
+  background-color: #059669;
+}
+
+/* Results Section */
+.mt-4 {
+  margin-top: 2rem;
+  background: linear-gradient(to right, #f0fdfa, #f0f4ff);
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+  font-size: 1rem;
+  color: #374151;
+}
+
+/* Score Highlight */
+.mt-4 p:first-child {
+  background: linear-gradient(to right, #c084fc, #60a5fa);
+  color: white;
+  font-weight: bold;
+  padding: 0.75rem 1rem;
+  border-radius: 0.75rem;
+  display: inline-block;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1rem;
+}
+
+/* Labels */
+.mt-4 p strong {
+  color: #1e3a8a;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+/* Keyword Pills */
+.mt-4 p span {
+  display: inline-block;
+  background-color: #e0f2fe;
+  color: #2563eb;
+  padding: 0.4rem 0.75rem;
+  margin: 0.25rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+}
+.mt-4 p span.missing {
+  background-color: #fee2e2;
+  color: #b91c1c;
+}

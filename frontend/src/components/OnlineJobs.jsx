@@ -22,25 +22,32 @@ function OnlineJobs() {
   }, []);
 
   return (
-    <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">Latest Online Jobs (Adzuna)</h2>
+    <div className="min-h-screen bg-gradient-to-br from-purple-700 via-fuchsia-600 to-pink-500 px-6 py-10 text-white">
+      <h2 className="text-3xl font-extrabold text-center mb-10">Latest Online Jobs (Adzuna)</h2>
 
       {loading ? (
-        <p>Loading jobs...</p>
+        <p className="text-center text-lg font-medium">Loading jobs...</p>
       ) : jobs.length === 0 ? (
-        <p>No jobs found.</p>
+        <p className="text-center text-lg font-medium">No jobs found.</p>
       ) : (
-        <div className="grid gap-4">
+        <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-8">
           {jobs.map((job, idx) => (
-            <div key={idx} className="border p-4 rounded shadow">
-              <h3 className="text-xl font-bold">{job.title}</h3>
-              <p className="text-gray-600">{job.company} - {job.location}</p>
-              <p className="mt-2">{job.description?.slice(0, 200)}...</p>
+            <div
+              key={idx}
+              className="bg-white rounded-xl shadow-lg p-6 text-gray-900 hover:shadow-xl transition duration-300"
+            >
+              <h3 className="text-xl font-bold text-indigo-700 mb-2">{job.title}</h3>
+              <p className="text-sm text-gray-600 mb-2">
+                {job.company} – {job.location}
+              </p>
+              <p className="text-sm mb-4">
+                {job.description?.slice(0, 200)}...
+              </p>
               <a
                 href={job.redirect_url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="mt-2 inline-block text-blue-600 underline"
+                className="text-blue-600 underline font-medium"
               >
                 Apply Now
               </a>

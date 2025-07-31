@@ -22,11 +22,15 @@ const Login = () => {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen">
-      <h1 className="text-2xl mb-4">Login</h1>
-      <form className="flex flex-col w-1/4" onSubmit={handleLogin}>
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gradient-to-br from-indigo-700 via-purple-600 to-pink-500 px-4 text-white">
+      <h1 className="text-4xl font-bold mb-6">Login</h1>
+
+      <form
+        className="flex flex-col w-full max-w-sm bg-white text-black rounded-xl shadow-xl p-6 space-y-4"
+        onSubmit={handleLogin}
+      >
         <input
-          className="mb-2 p-2 border"
+          className="p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
           type="text"
           placeholder="Username"
           value={username}
@@ -34,17 +38,26 @@ const Login = () => {
           required
         />
         <input
-          className="mb-2 p-2 border"
+          className="p-3 rounded-md border border-gray-300 focus:outline-none focus:ring-2 focus:ring-purple-500"
           type="password"
           placeholder="Password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit" className="bg-blue-500 text-white p-2 rounded">Login</button>
+        <button
+          type="submit"
+          className="py-3 px-6 rounded-md font-semibold shadow-md bg-gradient-to-r from-blue-500 to-blue-700 text-white hover:shadow-lg hover:scale-105 transition-transform duration-300"
+        >
+           Login
+        </button>
       </form>
-      <p className="mt-2">
-        New user? <Link className="text-blue-600" to="/register">Register here</Link>
+
+      <p className="mt-4 text-sm">
+        New user?{" "}
+        <Link className="text-yellow-300 hover:underline" to="/register">
+          Register here
+        </Link>
       </p>
     </div>
   );

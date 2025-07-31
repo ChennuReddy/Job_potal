@@ -44,14 +44,14 @@ function Register() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-[#fdf6f0]">
-      <div className="w-full max-w-md bg-white shadow-2xl rounded-3xl px-10 py-12">
-        <h2 className="text-3xl font-extrabold text-center text-gray-800 mb-8">Create an Account</h2>
+    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-orange-300 via-pink-300 to-rose-400 px-4 text-gray-800">
+      <div className="w-full max-w-md bg-white rounded-3xl shadow-2xl px-10 py-12">
+        <h2 className="text-3xl font-extrabold text-center mb-8">🎉 Create an Account</h2>
         <form onSubmit={handleRegister} className="space-y-5">
           <input
             type="text"
             placeholder="Username"
-            className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300"
+            className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-400"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
             required
@@ -59,7 +59,7 @@ function Register() {
           <input
             type="password"
             placeholder="Password"
-            className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300"
+            className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-400"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required
@@ -67,13 +67,13 @@ function Register() {
           <input
             type="email"
             placeholder="Email"
-            className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-orange-300"
+            className="w-full px-4 py-3 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-2 focus:ring-pink-400"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <button
             type="submit"
-            className="w-full bg-gradient-to-r from-orange-400 to-pink-400 text-white font-semibold py-3 rounded-xl shadow-md hover:opacity-90 transition duration-300"
+            className="w-full bg-gradient-to-r from-orange-400 to-pink-400 text-white font-semibold py-3 rounded-xl shadow-md hover:opacity-90 hover:scale-105 transition-transform duration-300"
           >
             Register
           </button>

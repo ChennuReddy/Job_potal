@@ -1,0 +1,96 @@
+/* job-list.css */
+
+/* Container styling */
+.p-6 {
+  padding: 1.5rem;
+  background: linear-gradient(135deg, #eef2ff 0%, #e0f2fe 100%);
+  border-radius: 0.75rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* Heading */
+.text-2xl {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: #1e3a8a;
+}
+.font-bold {
+  font-weight: 700;
+}
+.mb-4 {
+  margin-bottom: 1.25rem;
+}
+
+/* Grid layout */
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+}
+.gap-4 {
+  gap: 1.5rem;
+}
+
+/* Job card */
+.border {
+  position: relative;
+  background-color: #fff;
+  border-radius: 0.75rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04), 0 2px 4px rgba(0, 0, 0, 0.02);
+  padding: 1rem;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  animation: fadeInUp 0.5s ease both;
+}
+.border::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 6px;
+  height: 100%;
+  background: linear-gradient(to bottom, #3b82f6, #818cf8);
+}
+.border:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 16px rgba(0, 0, 0, 0.08), 0 4px 6px rgba(0, 0, 0, 0.04);
+}
+
+/* Text styles */
+.text-lg {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: #111827;
+}
+.font-semibold {
+  font-weight: 600;
+}
+.mt-1 {
+  margin-top: 0.5rem;
+  color: #4b5563;
+  font-size: 0.95rem;
+}
+.mt-2 {
+  margin-top: 0.75rem;
+}
+.text-sm-text-gray-600 {
+  font-size: 0.875rem;
+  display: inline-block;
+  background: #eef2ff;
+  color: #1e40af;
+  padding: 0.35rem 0.75rem;
+  border-radius: 9999px;
+  line-height: 1.25rem;
+}
+
+/* Animation */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

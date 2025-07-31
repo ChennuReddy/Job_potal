@@ -34,7 +34,7 @@ const Profile = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-tr from-peach-100 via-rose-100 to-yellow-100 flex items-center justify-center px-4 py-10">
+    <div className="min-h-screen bg-gradient-to-tr from-orange-100 via-rose-100 to-yellow-100 flex items-center justify-center px-4 py-10">
       <div className="max-w-md w-full bg-white rounded-3xl shadow-2xl border border-pink-200 p-8">
         {error ? (
           <p className="text-red-600 text-center font-semibold bg-red-100 rounded-md p-4">

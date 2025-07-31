@@ -15,7 +15,6 @@ const ResumeList = () => {
         });
 
         console.log("Resumes response:", response.data);
-        // Adjust according to actual response structure
         setResumes(Array.isArray(response.data) ? response.data : response.data.resumes || []);
       } catch (error) {
         console.error("Error fetching resumes:", error);
@@ -26,26 +25,37 @@ const ResumeList = () => {
   }, []);
 
   return (
-    <div className="p-4">
-      <h2 className="text-xl font-semibold mb-4">Uploaded Resumes</h2>
-      {resumes.length === 0 ? (
-        <p>No resumes uploaded yet.</p>
-      ) : (
-        <ul className="list-disc pl-6">
-          {resumes.map((resume) => (
-            <li key={resume.id}>
-              <a
-                href={resume.file}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-blue-600 underline"
+    <div className="min-h-screen bg-gradient-to-tr from-pink-200 via-orange-100 to-yellow-100 px-6 py-10 text-gray-800">
+      <div className="max-w-5xl mx-auto">
+        <h2 className="text-3xl font-extrabold text-center mb-10 text-pink-700 border-b border-pink-300 pb-4">
+          📁 Uploaded Resumes
+        </h2>
+
+        {resumes.length === 0 ? (
+          <p className="text-center text-lg font-medium text-gray-600">No resumes uploaded yet.</p>
+        ) : (
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+            {resumes.map((resume) => (
+              <div
+                key={resume.id}
+                className="bg-white rounded-xl shadow-lg p-6 border border-pink-200 hover:shadow-xl transition duration-300"
               >
-                {resume.file_name || resume.file.split("/").pop()}
-              </a>
-            </li>
-          ))}
-        </ul>
-      )}
+                <h3 className="text-lg font-bold text-indigo-700 mb-2">
+                  📄 {resume.file_name || resume.file.split("/").pop()}
+                </h3>
+                <a
+                  href={resume.file}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-500 underline font-medium hover:text-blue-700"
+                >
+                  Open Resume
+                </a>
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import API from '../api/api';
+import './job-match.css';
+
 
 function JobMatch() {
   const [resumeId, setResumeId] = useState('');
@@ -23,8 +25,11 @@ function JobMatch() {
       {result && (
         <div className="mt-4">
           <p><strong>Score:</strong> {result.score}%</p>
-          <p><strong>Matched Keywords:</strong> {result.matched_keywords.join(', ')}</p>
-          <p><strong>Missing Keywords</strong> {result.missing_keywords.join(', ')}</p>
+          {/* <p><strong>Matched Keywords:</strong> {result.matched_keywords.join(', ')}</p>
+          <p><strong>Missing Keywords</strong> {result.missing_keywords.join(', ')}</p> */}
+          <p><strong>Matched Keywords:</strong> {result.matched_keywords.map((kw) => <span key={kw}>{kw}</span>)}</p>
+          <p><strong>Missing Keywords:</strong> {result.missing_keywords.map((kw) => <span key={kw} className="missing">{kw}</span>)}</p>
+
     </div>
   )}
   </div>

@@ -1,5 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import API from '../api/api'
+import './job-list.css';
+
 
 function JobList() {
   const [jobs, setJobs] = useState([]);
