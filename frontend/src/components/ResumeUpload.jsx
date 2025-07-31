@@ -49,15 +49,15 @@ function ResumeUpload() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-[#FFE5B4] via-[#FFDAB9] to-[#FFDEAD] p-6">
-      <div className="bg-white p-10 rounded-3xl shadow-2xl max-w-xl w-full transform transition-all duration-500 hover:scale-[1.01] hover:shadow-orange-300">
+    <div className="min-h-screen overflow-hidden flex items-center justify-center bg-gradient-to-br from-orange-300 via-pink-300 to-rose-300 px-6 text-gray-800">
+      <div className="bg-white p-10 rounded-3xl shadow-2xl max-w-xl w-full transform transition duration-500 hover:scale-[1.01] hover:shadow-pink-300">
         <h1 className="text-3xl font-extrabold text-center text-gray-800 mb-6">
           Upload Your Resume
         </h1>
 
         <label
           htmlFor="resume"
-          className={`block w-full text-center border-4 border-dashed rounded-xl p-8 mb-6 cursor-pointer transition-all duration-300 ${
+          className={`block w-full text-center border-4 border-dashed rounded-xl p-8 mb-6 cursor-pointer transition duration-300 ${
             isDragging 
               ? 'border-orange-400 bg-orange-50 scale-105 shadow-inner'
               : 'border-orange-300 bg-gradient-to-r from-white to-orange-50'
@@ -76,7 +76,7 @@ function ResumeUpload() {
           />
           <div className="flex flex-col items-center justify-center space-y-3">
             <svg
-              className={`w-12 h-12 mb-3 transition-all duration-300 ${
+              className={`w-12 h-12 mb-3 transition duration-300 ${
                 file ? 'text-green-500' : 'text-orange-400'
               } ${isDragging ? 'scale-110' : ''}`}
               fill="none"
@@ -99,22 +99,18 @@ function ResumeUpload() {
                 </p>
               </div>
             ) : (
-              <div>
+              <>
                 <p className="text-gray-500 font-semibold">
-                  Drag and drop or{' '}
-                  <span className="text-orange-600 underline hover:text-orange-700 transition-colors">
-                    click to upload
-                  </span>{' '}
-                  your resume
+                  Drag and drop or <span className="text-orange-600 underline hover:text-orange-700 transition-colors">click to upload</span> your resume
                 </p>
                 <p className="text-gray-400 text-sm mt-2">Supports: PDF, DOC, DOCX</p>
-              </div>
+              </>
             )}
           </div>
         </label>
 
         <button
-          className={`w-full py-3 px-6 text-white text-lg font-semibold rounded-xl bg-gradient-to-r from-orange-400 to-pink-400 hover:from-orange-500 hover:to-pink-500 shadow-lg transition-all duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-50 ${
+          className={`w-full py-3 px-6 text-white text-lg font-semibold rounded-xl bg-gradient-to-r from-orange-400 to-pink-400 hover:from-orange-500 hover:to-pink-500 shadow-lg transition duration-300 transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-orange-400 focus:ring-opacity-50 ${
             uploading ? 'opacity-70 cursor-not-allowed' : ''
           }`}
           onClick={handleUpload}
@@ -138,7 +134,7 @@ function ResumeUpload() {
               {skills.map((skill, i) => (
                 <span
                   key={i}
-                  className="bg-orange-100 text-orange-800 px-4 py-1 rounded-full text-sm font-semibold shadow hover:bg-orange-200 transition-all duration-200 hover:scale-105 cursor-default"
+                  className="bg-orange-100 text-orange-800 px-4 py-1 rounded-full text-sm font-semibold shadow hover:bg-orange-200 transition duration-200 hover:scale-105 cursor-default"
                 >
                   {skill}
                 </span>
