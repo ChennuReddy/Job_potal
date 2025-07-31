@@ -1,5 +1,7 @@
 import React, { useState } from 'react';
 import API from '../api/api';
+import './ResumeUpload.css';
+
 
 function ResumeUpload() {
   const [file, setFile] = useState(null);
